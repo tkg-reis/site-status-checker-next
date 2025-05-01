@@ -1,12 +1,14 @@
 import { supabaseData } from "@/app/config/connection";
-import { type NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(res : NextApiResponse) {
-  // 型を変更しておく、auth apiに変更する。
-  const { data, error } = await supabaseData.from("site_user_table").select();
-  if (error) {
-    console.log(error);
-    return res.json({ error : `Error fetching ${error}`});
-  }
-  return res.json(data);
+export async function POST(req : NextRequest) {
+  console.log(req.json());
+    
+  const { email, password } = await req.json();
+
+  const { error } = await supabaseData.auth.signInWithPassword({email, password});
+
+  if(error) throw new Error(`error message ${error}`);
+
+  return NextResponse.json({ success : true });
 }

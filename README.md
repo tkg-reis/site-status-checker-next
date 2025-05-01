@@ -17,3 +17,6 @@
 # record
 - DBaccessが伴う場合のhttp通信はNextApiResponse/Request,urlstatusを確認するときのhttp通信はNextResponse/Request
 - 
+
+git config --global user.email "m_takaki@umenetts.co.jp"
+ git config --global user.name "masataka takaki"
