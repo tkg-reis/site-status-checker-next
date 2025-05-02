@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { registerUrlType, siteUrlType } from "./types/types";
+import { registerUrlType, siteUrlType } from "../types/types";
 import axios from "axios";
+import { redirect } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -14,6 +15,7 @@ import Link from "next/link";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const ENDPOINT = "/api/fetchSiteURLs";
   const [urlDatas, setUrlData] = useState<siteUrlType[]>([]);
   const fetchData = async (): Promise<siteUrlType[] | void> => {
@@ -54,6 +56,7 @@ export default function Home() {
   if (loading)
     return <p className="absolute bottom-1/2 left-1/2 text-3xl">Loading....</p>;
 
+  // if(!isLoggedIn) 
   return (
     <>
       <div className="flex gap-x-8 gap-y-4 flex-wrap">
