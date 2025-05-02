@@ -14,7 +14,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/router";
 
 // zodの復習
 const formSchema = z.object({
@@ -33,9 +32,6 @@ const formSchema = z.object({
 
 const Login = () => {
 
-  const router = useRouter();
-  // RFFの復習
-  // shdcn/uiの復習
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,28 +41,35 @@ const Login = () => {
   });
 
   const onLogin = async(values: z.infer<typeof formSchema>) => {
-    console.log(values);
 
+    let redirectPermission = false;
     try {
           const res = await fetch('/api/login', {
             method : 'POST',
             headers : {
               'Content-Type' : 'application/json'
-            }
+            },
+            body : JSON.stringify(values)
           })
 
+          console.log(res.json());
+          
+          
+
           if(!res.ok) {
-            const error = await res.json();
-            alert(`register failed ${error.message}`);
+            // const error = await res.json();
+            alert(`login failed`);
             return;
           } else {
-            alert('register successful');
-            router.push('/');
+            // redirectPermission = await res.json();
+            alert('login successful');
           }    
         } catch (error) {
-          alert(`register failed ${error}`);
+          alert(`login failed ${error}`);
           return;
         }
+      
+        
   }
 
 
@@ -95,7 +98,7 @@ const Login = () => {
               <FormItem>
                 <FormLabel>password</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input type="password" {...field} />
                 </FormControl>
                 <FormDescription>you input password.</FormDescription>
                 <FormMessage />

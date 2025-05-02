@@ -4,7 +4,6 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import {
   Form,
   FormControl,
@@ -15,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { singUp } from "@/lib/auth.services";
+import { useRouter } from "next/navigation";
  
 // zodの復習
 const formSchema = z.object({
@@ -42,44 +41,40 @@ const formSchema = z.object({
 }).required();
 
 const Register = () => {
-    const router = useRouter();
-  // RFFの復習
-  // shdcn/uiの復習
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-        username : "",
-        email: "",
-        password: ""
+      username : "",
+      email: "",
+      password: ""
     },
   });
+  
+  const router = useRouter();
 
   async function onRegister(values: z.infer<typeof formSchema>) : Promise<void> {
-    console.log(values);
-    const { username, email, password } = values;
     try {
         const res = await fetch('/api/register', {
           method : 'POST',
           headers : {
             'Content-Type' : 'application/json'
           },
-          body : JSON.stringify({ username, email, password })
+          body : JSON.stringify(values)
         })
-
+        
         if(!res.ok) {
-          const error = await res.json();
-          alert(`register failed ${error.message}`);
+          const error = res.json();
+          alert(`register failed ${error}`);
           return;
         } 
-        // else {
-        //   alert('register successful');
-        //   router.push('/login');
-        // }    
+        else {
+          alert('register successful');
+          router.push('/login');
+        }    
       } catch (error) {
         alert(`register failed ${error}`);
         return;
       }
-
   }
 
 
