@@ -32,8 +32,6 @@ const formSchema = z.object({
 });
 
 const Insert = () => {
-  // RFFの復習
-  // shdcn/uiの復習
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
