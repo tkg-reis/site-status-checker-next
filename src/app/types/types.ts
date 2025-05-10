@@ -9,7 +9,7 @@ export interface userDataType {
 
 export interface siteUrlType {
   id: number;
-  create_at: number;
+  created_at: number;
   url: string;
   company_name: string;
   status_number: number;
@@ -19,4 +19,8 @@ export interface registerUrlType {
   create_at: number;
   url : string;
   company_name: string;
+}
+
+export interface MappingRegisteredURLProps  {
+  urlDatas: siteUrlType[]
 }
