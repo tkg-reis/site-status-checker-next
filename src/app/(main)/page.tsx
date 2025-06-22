@@ -1,10 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import { siteUrlType } from "../types/types";
-import MappingRegisteredURL from "@/components/table";
 import SkeltonCard from "@/components/skeltonCard";
+import MappingSiteURL from "@/components/mappingSiteUrl";
+// import { headers } from "next/headers";
 
 export default function Home() {
+  // const requestUrl = headers().get('target-url');
   const [loading, setLoading] = useState(true);
 
   const ENDPOINT = "/api/fetchSiteURLs";
@@ -40,8 +42,9 @@ export default function Home() {
   return (
     <>
       <div className="flex gap-x-8 gap-y-4 flex-wrap">
+        {/* {requestUrl} */}
         {urlDatas != null
-          ? <MappingRegisteredURL urlDatas={urlDatas} />
+          ? <MappingSiteURL urlDatas={urlDatas} />
           : "ネットワーク未接続またはDB接続エラーです"}
       </div>
     </>

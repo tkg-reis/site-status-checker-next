@@ -16,11 +16,16 @@ export interface siteUrlType {
 }
 export interface registerUrlType {
   id: number;
-  create_at: number;
+  created_at: number;
   url : string;
   company_name: string;
+  execution_time : string;
 }
 
-export interface MappingRegisteredURLProps  {
+export interface MappingSiteURLProps  {
   urlDatas: siteUrlType[]
+}
+
+export interface MappingRegisteredURLProps {
+  urlDatas: registerUrlType[]
 }
