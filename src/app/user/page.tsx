@@ -1,8 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { registerUrlType, userDataType } from "../types/types";
+import { registerUrlType } from "../types/types";
 import SkeltonCard from "@/components/skeltonCard";
 import MappingRegisteredUrl from "@/components/mappingRegisteredUrl";
+import MappingUserData from "@/components/mappingUserData";
+import type { User } from "@supabase/supabase-js";
 // import { headers } from "next/headers";
 
 const User = () => {
@@ -16,7 +18,7 @@ const User = () => {
   const [registeredUrlData, setregisteredUrlData] = useState<registerUrlType[]>(
     []
   );
-  const [user, setUser] = useState<userDataType[]>([]);
+  const [user, setUser] = useState<User>();
   const fetchUrlData = async (): Promise<registerUrlType[] | void> => {
     try {
       const res: registerUrlType[] = await fetch(ENDPOINT.registerUrl, {
@@ -28,11 +30,13 @@ const User = () => {
     }
   };
 
-  const fetchUserData = async (): Promise<userDataType[] | void> => {
+  const fetchUserData = async (): Promise<User | void> => {
     try {
-      const res: userDataType[] = await fetch(ENDPOINT.userData, {
+      const res: User = await fetch(ENDPOINT.userData, {
         cache: "force-cache",
       }).then((res) => res.json());
+      console.log(res);
+      
       setUser(res);
     } catch (error) {
       console.log(error);
@@ -43,7 +47,7 @@ const User = () => {
   useEffect(() => {
     try {
       fetchUrlData();
-      // fetchUserData();
+      fetchUserData();
     } catch (error) {
       throw new Error(`Failed to fetch data at api access : ${error}`);
     } finally {
@@ -55,6 +59,13 @@ const User = () => {
 
   return (
     <>
+      <h2 className="m-2 font-bold text-xl">user</h2>
+      <div className="border">
+        {user != null 
+          ? <MappingUserData user={user}/> 
+          : "ネットワーク未接続またはDB接続エラーです"}
+      </div>
+      <h2 className="m-2 font-bold text-xl">registered url info</h2>
       <div className="flex gap-3 flex-wrap">
         {/* {requestUrl} */}
         {registeredUrlData != null

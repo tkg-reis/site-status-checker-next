@@ -4,6 +4,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import {
   Form,
   FormControl,
@@ -15,7 +16,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-// zodの復習
 const formSchema = z.object({
   email: z
     .string()
@@ -31,7 +31,7 @@ const formSchema = z.object({
 }).required();
 
 const Login = () => {
-
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,24 +52,20 @@ const Login = () => {
             body : JSON.stringify(values)
           })
 
-          console.log(res.json());
-          
-          
+          const { redirect } = await res.json();
+          redirectPermission = redirect ?? false;
 
-          if(!res.ok) {
-            // const error = await res.json();
+          if(!res.ok && !redirectPermission) {
             alert(`login failed`);
-            return;
+            router.push("/login");
           } else {
-            // redirectPermission = await res.json();
             alert('login successful');
+            router.push("/");
           }    
         } catch (error) {
           alert(`login failed ${error}`);
           return;
         }
-      
-        
   }
 
 
