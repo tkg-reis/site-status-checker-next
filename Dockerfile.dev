@@ -1,0 +1,22 @@
+# 開発環境用のDockerfile
+FROM node:18-alpine
+
+# pnpmをインストール
+RUN npm install -g pnpm
+
+WORKDIR /app
+
+# package.jsonとpnpm-lock.yamlをコピー
+COPY package.json pnpm-lock.yaml* ./
+
+# 依存関係をインストール
+RUN pnpm install
+
+# 環境変数を設定
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# ポート3000を公開
+EXPOSE 3000
+
+# 開発サーバーを起動
+CMD ["pnpm", "dev"] 

@@ -1,3 +1,71 @@
+# Site Status Checker Next.js
+
+Next.js 14を使用したサイトステータスチェッカーアプリケーションです。
+
+## Dockerでの起動方法
+
+### 開発環境での起動
+
+```bash
+# 開発環境でアプリケーションを起動
+docker-compose up app-dev
+
+# バックグラウンドで起動する場合
+docker-compose up -d app-dev
+```
+
+### 本番環境での起動
+
+```bash
+# 本番環境でアプリケーションを起動
+docker-compose up app-prod
+
+# バックグラウンドで起動する場合
+docker-compose up -d app-prod
+```
+
+### 個別のDockerコマンドでの起動
+
+```bash
+# 開発環境用イメージをビルド
+docker build -f Dockerfile.dev -t site-status-checker-dev .
+
+# 開発環境でコンテナを起動
+docker run -p 3000:3000 -v $(pwd):/app site-status-checker-dev
+
+# 本番環境用イメージをビルド
+docker build -t site-status-checker-prod .
+
+# 本番環境でコンテナを起動
+docker run -p 3000:3000 site-status-checker-prod
+```
+
+### コンテナの停止
+
+```bash
+# すべてのコンテナを停止
+docker-compose down
+
+# 特定のサービスを停止
+docker-compose stop app-dev
+docker-compose stop app-prod
+```
+
+## アクセス方法
+
+アプリケーションが起動したら、ブラウザで以下のURLにアクセスしてください：
+
+- http://localhost:3000
+
+## 環境変数
+
+必要に応じて以下の環境変数を設定できます：
+
+- `NODE_ENV`: 実行環境（development/production）
+- `NEXT_TELEMETRY_DISABLED`: Next.jsのテレメトリを無効化
+
+---
+
 # memo
 
 - rlsの設計設定。
