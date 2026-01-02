@@ -42,7 +42,6 @@ const Login = () => {
 
   const onLogin = async(values: z.infer<typeof formSchema>) => {
 
-    let redirectPermission = false;
     try {
           const res = await fetch('/api/login', {
             method : 'POST',
@@ -52,15 +51,16 @@ const Login = () => {
             body : JSON.stringify(values)
           })
 
-          const { redirect } = await res.json();
-          redirectPermission = redirect ?? false;
+          const data = await res.json();
 
-          if(!res.ok && !redirectPermission) {
+          if(!res.ok && !data.ok) {
             alert(`login failed`);
-            router.push("/login");
+            router.replace("/login");
+            return;
           } else {
             alert('login successful');
-            router.push("/");
+            router.replace("/");
+            router.refresh(); // middleware / Server Components の反映に重要
           }    
         } catch (error) {
           alert(`login failed ${error}`);

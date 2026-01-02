@@ -1,0 +1,20 @@
+{
+    "name" : "nextjs-site-status-checker",
+    "service" : "nextjs-site-status-checker",
+    "workspaceFolder": "/workspace",
+    "dockerComposeFile": "../docker-compose.yml",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "esbenp.prettier-vscode",
+                "dsznajder.es7-react-js-snippets",
+                "steoates.autoimport",
+                "mylesmurphy.prettify-ts",
+                "vincaslt.highlight-matching-tag",
+                "oderwat.indent-rainbow",
+                "bradlc.vscode-tailwindcss",
+                "github.github-vscode-theme"
+            ]
+        }
+    }
+}

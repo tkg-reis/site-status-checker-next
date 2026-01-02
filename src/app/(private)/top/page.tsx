@@ -1,15 +1,13 @@
-// "use client";
+// 'use client';
 
 // import { requireAuth } from "@/lib/auth";
 
 // import { useEffect, useState } from "react";
-// import { siteUrlType } from "../types/types";
+// import { siteUrlType } from "../../types/types";
 // import SkeltonCard from "@/components/skeltonCard";
 // import MappingSiteURL from "@/components/mappingSiteUrl";
-// import { headers } from "next/headers";
 
-export default async function Home() {
-  // const requestUrl = headers().get('target-url');
+export default async function Top() {
   // const [loading, setLoading] = useState(true);
 
   // const ENDPOINT = "/api/fetchSiteURLs";
@@ -54,13 +52,8 @@ export default async function Home() {
     //       ? <MappingSiteURL urlDatas={urlDatas} />
     //       : "ネットワーク未接続またはDB接続エラーです"}
     //   </div>
+     
     // </>
-    <>
-      <main>
-        {/* <h1>ようこそ、{user.email}さん</h1> */}
-        {/* ページコンテンツ */}
-        こんにちは
-      </main>
-    </>
+      <h1>hello</h1>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { registerUrlType } from "../types/types";
+import { registerUrlType } from "../../types/types";
 import SkeltonCard from "@/components/skeltonCard";
 import MappingRegisteredUrl from "@/components/mappingRegisteredUrl";
 import MappingUserData from "@/components/mappingUserData";
