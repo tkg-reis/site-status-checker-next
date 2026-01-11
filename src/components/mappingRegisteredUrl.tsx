@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 import UpdateForm from './updateForm';
 import DeleteForm from './deleteForm';
+import { setCronNumber } from '@/lib/helper/helper';
 
 const MappingRegisteredUrl = ({ urlDatas } : MappingRegisteredURLProps) => {
   return (
@@ -36,7 +37,7 @@ const MappingRegisteredUrl = ({ urlDatas } : MappingRegisteredURLProps) => {
                   <div className="grid gap-2">
                     <div className="flex items-center">
                       <Label htmlFor="password">
-                        {urlData.execution_time}
+                        {setCronNumber(urlData.execution_time)} ※定期実行作成中
                       </Label>
                       <Input type="hidden" value={urlData.execution_time} />
                     </div>

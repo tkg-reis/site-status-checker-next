@@ -120,12 +120,12 @@ const Insert = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="1">15分ごとにhttpリクエスト</SelectItem>
-                    <SelectItem value="2">30分ごとにhttpリクエスト</SelectItem>
-                    <SelectItem value="3">1時間ごとにhttpリクエスト</SelectItem>
-                    <SelectItem value="4">3時間ごとにhttpリクエスト</SelectItem>
-                    <SelectItem value="5">6時間ごとにhttpリクエスト</SelectItem>
-                    <SelectItem value="6">12時間ごとにhttpリクエスト</SelectItem>
+                    <SelectItem value="0">15分ごとにhttpリクエスト</SelectItem>
+                    <SelectItem value="1">30分ごとにhttpリクエスト</SelectItem>
+                    <SelectItem value="2">1時間ごとにhttpリクエスト</SelectItem>
+                    <SelectItem value="3">3時間ごとにhttpリクエスト</SelectItem>
+                    <SelectItem value="4">6時間ごとにhttpリクエスト</SelectItem>
+                    <SelectItem value="5">12時間ごとにhttpリクエスト</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormDescription>

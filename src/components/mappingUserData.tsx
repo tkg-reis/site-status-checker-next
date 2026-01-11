@@ -28,7 +28,7 @@ const MappingUserData = ( { user } : {  user : User }) => {
                     <TableCell>{userMetaData.username}</TableCell>
                     <TableCell>{user.email}</TableCell>
                     <TableCell>{user.last_sign_in_at}</TableCell>
-                    <TableCell>edit</TableCell>
+                    <TableCell>edit※作成中</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
