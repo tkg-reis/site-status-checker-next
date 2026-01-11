@@ -5,10 +5,8 @@ import SkeltonCard from "@/components/skeltonCard";
 import MappingRegisteredUrl from "@/components/mappingRegisteredUrl";
 import MappingUserData from "@/components/mappingUserData";
 import type { User } from "@supabase/supabase-js";
-// import { headers } from "next/headers";
 
 const User = () => {
-  // const requestUrl = headers().get('target-url');
   const [loading, setLoading] = useState(true);
 
   const ENDPOINT = {
@@ -35,11 +33,9 @@ const User = () => {
       const res: User = await fetch(ENDPOINT.userData, {
         cache: "force-cache",
       }).then((res) => res.json());
-      console.log(res);
       
       setUser(res);
     } catch (error) {
-      console.log(error);
       throw new Error("Failed to fetch users");
     }
   };
