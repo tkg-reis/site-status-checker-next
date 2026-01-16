@@ -26,13 +26,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { registerUrlType } from "@/app/types/types";
+import { monitors, registerUrlType } from "@/app/types/types";
 import { useForm } from "react-hook-form";
 
 const formSchema = z
   .object({
     id : z
-    .number(),
+    .string(),
     company_name: z
       .string()
       .min(1, {
@@ -52,11 +52,11 @@ const formSchema = z
   })
   .required();
 
-const DeleteForm = ( { urlData } : { urlData : registerUrlType }) => {
+const DeleteForm = ( { urlData } : { urlData : monitors }) => {
   const form = useForm({
     defaultValues: {
       id : urlData.id,
-      company_name : urlData.company_name,
+      company_name : urlData.name,
       url: urlData.url,
       execution_time : urlData.execution_time
     },

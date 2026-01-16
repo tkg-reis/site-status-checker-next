@@ -49,6 +49,8 @@ const Insert = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       url: "",
+      company_name : "",
+      execution_time: "0"
     },
   });
   const onSubmit = async(values: z.infer<typeof formSchema>) => {
