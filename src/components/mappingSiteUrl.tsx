@@ -23,20 +23,21 @@ const MappingSiteURL = ({ urlDatas }: MappingSiteURLProps) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {urlDatas.map((urlData) => {
+        {urlDatas ? urlDatas.map((urlData, i) => {
+          const val = urlData.monitor_checks?.[i]
           return (
             <TableRow key={urlData.id}>
               <TableCell className="font-medium">
-                {urlData.company_name}
+                {urlData.name}
               </TableCell>
               <TableCell>{urlData.url}</TableCell>
               <TableCell>
                 <span
-                  className={`${urlData.status_number === 200 ? "green-flashing" : "red-flashing"}`}
+                  className={`${val?.status_code === 200 ? "green-flashing" : "red-flashing"}`}
                 ></span>
               </TableCell>
-              <TableCell>{urlData.status_number}</TableCell>
-              <TableCell>{urlData.created_at}</TableCell>
+              <TableCell>{val?.status_code}</TableCell>
+              <TableCell>{val?.checked_at}</TableCell>
               <TableCell>
                 <div className="flex justify-between space-x-4">
                   delete※実装中
@@ -44,7 +45,7 @@ const MappingSiteURL = ({ urlDatas }: MappingSiteURLProps) => {
               </TableCell>
             </TableRow>
           );
-        })}
+        }) : "登録データがありません"}
       </TableBody>
     </Table>
   );

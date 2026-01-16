@@ -29,14 +29,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { registerUrlType } from "@/app/types/types";
+import { monitors } from "@/app/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 const formSchema = z
   .object({
     id : z
-    .number(),
+    .string(),
     company_name: z
       .string()
       .min(1, {
@@ -56,12 +56,12 @@ const formSchema = z
   })
   .required();
 
-const UpdateForm = ( { urlData } : { urlData : registerUrlType }) => {
+const UpdateForm = ( { urlData } : { urlData : monitors }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       id : urlData.id,
-      company_name : urlData.company_name,
+      company_name : urlData.name,
       url: urlData.url,
       execution_time : urlData.execution_time
     },
