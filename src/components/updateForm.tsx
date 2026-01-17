@@ -1,5 +1,4 @@
-"use client"
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import {
@@ -32,6 +31,7 @@ import {
 import { monitors } from "@/app/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 const formSchema = z
   .object({
@@ -57,6 +57,9 @@ const formSchema = z
   .required();
 
 const UpdateForm = ( { urlData } : { urlData : monitors }) => {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -82,6 +85,8 @@ const UpdateForm = ( { urlData } : { urlData : monitors }) => {
         return;
       } else {
         alert("update successful");
+        router.refresh();
+        setOpen(false);
         return;
       }
     } catch (error) {
@@ -91,7 +96,7 @@ const UpdateForm = ( { urlData } : { urlData : monitors }) => {
   };
   return (
     <>
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button variant="outline">update</Button>
           </DialogTrigger>
