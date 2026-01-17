@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
  
 // zodの復習
 const formSchema = z.object({
@@ -127,6 +128,12 @@ const Register = () => {
           <Button type="submit">Register</Button>
         </form>
       </Form>
+      <div className="mt-10">
+        <p className="font-medium text-sm">Already you have an account?</p>
+        <Button className="mt-5">
+          <Link href="/login">Login</Link>
+        </Button>
+      </div>
     </>
   );
 };

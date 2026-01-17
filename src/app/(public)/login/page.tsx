@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 const formSchema = z.object({
   email: z
@@ -104,6 +105,13 @@ const Login = () => {
           <Button type="submit">Login</Button>
         </form>
       </Form>
+      
+      <div className="mt-10">
+        <p className="font-medium text-sm">Do you have an account?</p>
+        <Button className="mt-5">
+          <Link href="/register">Register</Link>
+        </Button>
+      </div>
     </>
   );
 };
