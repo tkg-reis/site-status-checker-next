@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from "react";
-import { monitorChecksRow, monitors } from "../../types/types";
+import { monitorChecksRow } from "../../types/types";
 import SkeltonCard from "@/components/skeltonCard";
 import MappingSiteURL from "@/components/mappingSiteUrl";
 
@@ -43,7 +43,6 @@ export default function Top() {
   return (
     <>
       <div className="flex gap-x-8 gap-y-4 flex-wrap">
-        {/* {requestUrl} */}
         {urlDatas != null
           ? <MappingSiteURL urlDatas={urlDatas} />
           : "ネットワーク未接続またはDB接続エラーです"}

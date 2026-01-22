@@ -1,32 +1,7 @@
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { monitors, registerUrlType } from "@/app/types/types";
+import { Form } from "@/components/ui/form";
+import { monitors } from "@/app/types/types";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 

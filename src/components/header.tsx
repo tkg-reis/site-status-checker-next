@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import LogoutButton from "./logoutButton";
 import { createClient } from "../lib/supabase/server";
 

@@ -1,9 +1,7 @@
-import React from 'react'
 import { MappingRegisteredURLProps } from '@/app/types/types'
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";

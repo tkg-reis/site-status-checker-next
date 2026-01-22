@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,8 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
- 
-// zodの復習
+
 const formSchema = z.object({
     username : z
         .string()

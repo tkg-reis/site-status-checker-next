@@ -1,4 +1,3 @@
-// src/app/(private)/layout.tsx
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
