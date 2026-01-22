@@ -1,8 +1,5 @@
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
 
 export async function POST() {
     const response = NextResponse.json({ ok: true });
@@ -16,6 +13,4 @@ export async function POST() {
     
   // トップページへリダイレクト
     return response;
-
-  // return NextResponse.json({ redirect : true })
 }

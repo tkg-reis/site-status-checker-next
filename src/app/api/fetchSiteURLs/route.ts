@@ -1,9 +1,5 @@
-import { supabaseBrowser } from '@/app/config/connectionServer';
-import { supabaseData } from './../../config/connection';
 import { createClient } from '@/lib/supabase/server';
-// import { supabaseData } from "@/app/config/connection";
 import { NextResponse } from "next/server";
-import { redirect } from 'next/navigation';
 
 export async function GET() {
     const supabase = await createClient()

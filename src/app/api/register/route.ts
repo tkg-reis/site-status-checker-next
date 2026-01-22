@@ -21,8 +21,5 @@ export async function POST(req : Request) {
 
   if(error) throw new Error(`error message : ${error}`);
 
-  // トップページのlayoutを再検証
-  revalidatePath('/', 'layout')
-  // トップページへリダイレクト
   redirect('/')
 }

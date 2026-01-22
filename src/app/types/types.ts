@@ -1,21 +1,7 @@
 import { Database } from "../../../database.types";
 
-export interface siteUrlType {
-  id: number;
-  created_at: number;
-  url: string;
-  company_name: string;
-  status_number: number;
-}
-
 export type MonitorChecks = Database["public"]["Tables"]["monitor_checks"]["Row"];
-export interface registerUrlType {
-  id: number;
-  created_at: number;
-  url : string;
-  company_name: string;
-  execution_time : string;
-}
+
 export type monitors = Database["public"]["Tables"]["monitors"]["Row"];
 
 export type monitorChecksRow = {

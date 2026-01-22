@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { monitors } from "../../types/types";
 import SkeltonCard from "@/components/skeltonCard";
 import MappingRegisteredUrl from "@/components/mappingRegisteredUrl";
@@ -63,7 +63,6 @@ const User = () => {
       </div>
       <h2 className="m-2 font-bold text-xl">registered url info</h2>
       <div className="flex gap-3 flex-wrap">
-        {/* {requestUrl} */}
         {registeredUrlData != null
           ? <MappingRegisteredUrl urlDatas={registeredUrlData} />
           : "ネットワーク未接続またはDB接続エラーです"}
