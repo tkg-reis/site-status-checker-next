@@ -1,38 +1,41 @@
 'use client';
 import { useEffect, useState } from "react";
-import { monitorRow } from "../../types/types";
+import { monitorChecksRow, monitors } from "../../types/types";
 import SkeltonCard from "@/components/skeltonCard";
 import MappingSiteURL from "@/components/mappingSiteUrl";
 
 export default function Top() {
   const [loading, setLoading] = useState(true);
+  const [urlDatas, setUrlData] = useState<monitorChecksRow[]>([]);
 
-  const ENDPOINT = "/api/fetchSiteURLs";
+  const ENDPOINT = {
+    urlDataLog : "/api/fetchSiteURLs",
+    logInsert : "/api/logInsert" 
+  }
 
-  const [urlDatas, setUrlData] = useState<monitorRow[]>([]);
-
-  const fetchData = async (): Promise<monitorRow[] | void> => {
+  const fetchUrlData = async (): Promise<monitorChecksRow[] | void> => {
     try {
-
-      const res: monitorRow[] = await fetch(ENDPOINT, {
+      const res: monitorChecksRow[] = await fetch(ENDPOINT.urlDataLog, {
         cache: "no-store",
       }).then((res) => res.json());
       
       setUrlData((prev) => [...prev, ...res]);
-
     } catch (error) {
       throw new Error(`Failed to fetch data ${error}`);
     }
   };
 
   useEffect(() => {
-    try {
-      fetchData();
-    } catch (error) {
-      throw new Error(`Failed to fetch data ${error}`);
-    } finally {
-      setLoading(false);
-    }
+    (async() => {
+      try {
+        await fetch(ENDPOINT.logInsert, { method: "POST" });
+        await fetchUrlData();
+      } catch (error) {
+        throw new Error(`Failed to fetch data ${error}`);
+      } finally {
+        setLoading(false);
+      }
+    })();
   }, []);
 
   if (loading) return <SkeltonCard/>;

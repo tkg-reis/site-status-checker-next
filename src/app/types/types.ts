@@ -18,20 +18,21 @@ export interface registerUrlType {
 }
 export type monitors = Database["public"]["Tables"]["monitors"]["Row"];
 
-export type monitorRow = {
-  id: string;
-  name: string;
-  url: string;
-  created_at: string;
-  monitor_checks?: {
-    checked_at: string;
-    status_code: number | null;
-    error_message: string | null;
-  }[];
+export type monitorChecksRow = {
+  id: number
+  checked_at: string
+  status_code: number | null
+  error_message: string | null
+  monitor_id: string
+  monitors?: {
+    id: string;
+    name: string;
+    url : string;
+  };
 }
 
 export interface MappingSiteURLProps  {
-  urlDatas: monitorRow[]
+  urlDatas: monitorChecksRow[]
 }
 
 export interface MappingRegisteredURLProps {
