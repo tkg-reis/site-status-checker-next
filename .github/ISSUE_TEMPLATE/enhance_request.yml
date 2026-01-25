@@ -19,7 +19,7 @@ body:
       label: エンハンスメントの内容
       description: エンハンスメントの内容を具体的に記載してください。
       placeholder: 対象のurlをステータスコードが正常の時であったり、ログが追加された日、表示件数などを検索、設定できるようにする。
-      value: ""
+      value: "# "
     validations:
       required: true
   - type: textarea
@@ -28,7 +28,7 @@ body:
       label: どうすれば実装できるか。
       description: エンハンスメントのためになにか提案などがあれば記入してください。
       placeholder: 検索機能を追加するにあたってクライアントコンポーネントかサーバーコンポーネントで実装するかの検討など
-      value: ""
+      value: "# "
     validations:
       required: true
   - type: textarea

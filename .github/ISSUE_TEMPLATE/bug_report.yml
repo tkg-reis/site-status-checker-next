@@ -19,7 +19,7 @@ body:
       label: バグの内容
       description: バグの内容を具体的に記載してください。
       placeholder: 今のzodの実装だとurlでない文字列であるにも関わらすバリデーションチェックを通過してしまう。
-      value: ""
+      value: "# "
     validations:
       required: true
   - type: textarea
@@ -28,7 +28,7 @@ body:
       label: バグの解決
       description: バグ解決のためになにか提案などがあれば記入してください。
       placeholder: zodの公式ドキュメントから正しいバリデーションチェック構文を記載する。
-      value: ""
+      value: "# "
     validations:
       required: true
   - type: textarea
