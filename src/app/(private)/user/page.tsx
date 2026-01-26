@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { registerUrlType } from "../../types/types";
+import { useEffect, useState } from "react";
+import { monitors } from "../../types/types";
 import SkeltonCard from "@/components/skeltonCard";
 import MappingRegisteredUrl from "@/components/mappingRegisteredUrl";
 import MappingUserData from "@/components/mappingUserData";
@@ -13,13 +13,13 @@ const User = () => {
     registerUrl: "/api/fetchRegisteredURLs",
     userData: "/api/user",
   };
-  const [registeredUrlData, setregisteredUrlData] = useState<registerUrlType[]>(
+  const [registeredUrlData, setregisteredUrlData] = useState<monitors[]>(
     []
   );
   const [user, setUser] = useState<User>();
-  const fetchUrlData = async (): Promise<registerUrlType[] | void> => {
+  const fetchUrlData = async (): Promise<monitors[] | void> => {
     try {
-      const res: registerUrlType[] = await fetch(ENDPOINT.registerUrl, {
+      const res: monitors[] = await fetch(ENDPOINT.registerUrl, {
         cache: "no-store",
       }).then((res) => res.json());
       setregisteredUrlData((prev) => [...prev, ...res]);
@@ -63,7 +63,6 @@ const User = () => {
       </div>
       <h2 className="m-2 font-bold text-xl">registered url info</h2>
       <div className="flex gap-3 flex-wrap">
-        {/* {requestUrl} */}
         {registeredUrlData != null
           ? <MappingRegisteredUrl urlDatas={registeredUrlData} />
           : "ネットワーク未接続またはDB接続エラーです"}

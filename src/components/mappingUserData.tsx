@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Table,
   TableBody,
@@ -10,28 +9,28 @@ import {
 import type { User, UserMetadata } from '@supabase/supabase-js';
 
 const MappingUserData = ( { user } : {  user : User }) => {
+  const userMetaData: UserMetadata = user.user_metadata;
 
-    const userMetaData: UserMetadata = user.user_metadata;
   return (
     <>
-        <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="">user</TableHead>
-                  <TableHead>email</TableHead>
-                  <TableHead className="">last sign in</TableHead>
-                  <TableHead className="">edit</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow >
-                    <TableCell>{userMetaData.username}</TableCell>
-                    <TableCell>{user.email}</TableCell>
-                    <TableCell>{user.last_sign_in_at}</TableCell>
-                    <TableCell>edit※作成中</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>user</TableHead>
+            <TableHead>email</TableHead>
+            <TableHead>last sign in</TableHead>
+            <TableHead>edit</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow >
+              <TableCell>{userMetaData.username}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              <TableCell>{user.last_sign_in_at}</TableCell>
+              <TableCell>edit※作成中</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
     </>
   )
 }

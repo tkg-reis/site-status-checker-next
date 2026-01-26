@@ -1,16 +1,17 @@
-import { supabaseData } from "@/app/config/connection";
 import { NextResponse } from "next/server";
+import { createClient } from "@/lib/supabase/server";
 
 export async function PATCH(req : Request) {
 
     const { id ,url, company_name, execution_time } = await req.json();
 
-    const { error } = await supabaseData.from("register_url").update(
-        {
+    const supabase = await createClient();
+
+    const { error } = await supabase.from("monitors").update({
             url : url,
-            company_name : company_name, 
+            name : company_name, 
             execution_time : execution_time
-        }).eq('id' , id);
+    }).eq('id' , id);
 
     if(error) throw new Error(`error message ${error.message}`);
 

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Table,
   TableBody,
@@ -14,37 +13,32 @@ const MappingSiteURL = ({ urlDatas }: MappingSiteURLProps) => {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="">Company</TableHead>
+          <TableHead>Name</TableHead>
           <TableHead>URL</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Status Code</TableHead>
-          <TableHead className="">registerd at</TableHead>
-          <TableHead className="">Delete</TableHead>
+          <TableHead>Checked at</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {urlDatas.map((urlData) => {
+        {urlDatas ? urlDatas.map((urlData, i) => {
+          const val = urlData.monitors
           return (
             <TableRow key={urlData.id}>
               <TableCell className="font-medium">
-                {urlData.company_name}
+                {val?.name}
               </TableCell>
-              <TableCell>{urlData.url}</TableCell>
+              <TableCell>{val?.url}</TableCell>
               <TableCell>
                 <span
-                  className={`${urlData.status_number === 200 ? "green-flashing" : "red-flashing"}`}
+                  className={`${urlData.status_code === 200 ? "green-flashing" : "red-flashing"}`}
                 ></span>
               </TableCell>
-              <TableCell>{urlData.status_number}</TableCell>
-              <TableCell>{urlData.created_at}</TableCell>
-              <TableCell>
-                <div className="flex justify-between space-x-4">
-                  delete※実装中
-                </div>
-              </TableCell>
+              <TableCell>{urlData.status_code}</TableCell>
+              <TableCell>{urlData.checked_at}</TableCell>
             </TableRow>
           );
-        })}
+        }) : "登録データがありません"}
       </TableBody>
     </Table>
   );

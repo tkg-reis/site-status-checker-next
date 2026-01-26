@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -49,6 +48,8 @@ const Insert = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       url: "",
+      company_name : "",
+      execution_time: "0"
     },
   });
   const onSubmit = async(values: z.infer<typeof formSchema>) => {
