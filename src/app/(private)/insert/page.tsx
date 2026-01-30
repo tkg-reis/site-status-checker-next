@@ -1,5 +1,5 @@
 "use client";
-import { z } from "zod";
+import { httpUrl, z } from "zod/v4"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
@@ -30,10 +30,7 @@ const formSchema = z.object({
     })
     .max(20),
   url: z
-    .string()
-    .url({
-      message : "有効なURLを入力してください"
-    })
+    .httpUrl()
     .min(10, {
       message: "URLは10文字以上50文字以下にしてください",
     })
