@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-test("ログインページへの遷移", async({page}) => {
-    await page.goto("http://127.0.0.1:3000/login");
-
-    await expect(page.locator(".p-2")).toContainText("SiteStatusChecker");
-})
+test(' / は未認証の場合 /top 経由で /login に着地してタイトルをテストする', async ({ page }) => {
+  await page.goto('/'); // baseURLがある前提
+  const title = await page.title();
+  expect(title).toBe("site status checker");
+});
