@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "playwright test",
+    "test:filename": "playwright test \"$npm_config_filename.spec.ts\"",
+    "report": "playwright show-report --host 0.0.0.0 --port 9323"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "127.0.0.1:3000:3000"
+      - "127.0.0.1:9323:9323"
     volumes:
       - .:/workspace
     env_file:
