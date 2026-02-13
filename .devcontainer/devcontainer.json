@@ -13,7 +13,8 @@
                 "vincaslt.highlight-matching-tag",
                 "oderwat.indent-rainbow",
                 "bradlc.vscode-tailwindcss",
-                "github.github-vscode-theme"
+                "github.github-vscode-theme",
+                "ms-playwright.playwright"
             ]
         }
     }
