@@ -24,7 +24,7 @@ const MappingSiteURL = ({ urlDatas }: MappingSiteURLProps) => {
         {urlDatas ? urlDatas.map((urlData, i) => {
           const val = urlData.monitors
           return (
-            <TableRow key={urlData.id}>
+            <TableRow key={`${urlData.monitor_id}:${urlData.id}`}>
               <TableCell className="font-medium">
                 {val?.name}
               </TableCell>

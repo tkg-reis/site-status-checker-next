@@ -19,7 +19,7 @@ export default function Top() {
         cache: "no-store",
       }).then((res) => res.json());
       
-      setUrlData((prev) => [...prev, ...res]);
+      setUrlData(res);
     } catch (error) {
       throw new Error(`Failed to fetch data ${error}`);
     }
