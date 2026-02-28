@@ -18,8 +18,14 @@ export async function POST(req : Request) {
         },
         setAll(cookiesToSet) {
           for (const { name, value, options } of cookiesToSet) {
-            // ブラウザへ Set-Cookie を返す
-            response.cookies.set(name, value, options);
+            // return Set-Cookie for browser
+            response.cookies.set(name, value, {
+                ...options,
+                httpOnly : true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite : "lax",
+                path : "/"
+            });
           }
         },
       },
