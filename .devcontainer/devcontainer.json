@@ -14,7 +14,8 @@
                 "oderwat.indent-rainbow",
                 "bradlc.vscode-tailwindcss",
                 "github.github-vscode-theme",
-                "ms-playwright.playwright"
+                "ms-playwright.playwright",
+                "github.copilot-chat"
             ]
         }
     }
